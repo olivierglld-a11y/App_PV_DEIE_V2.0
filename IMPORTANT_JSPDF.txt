@@ -1,0 +1,134 @@
+# ⚠️ ACTION OBLIGATOIRE AVANT DÉPLOIEMENT
+
+## TÉLÉCHARGER jsPDF
+
+---
+
+## 🚨 CRITIQUE : L'app NE FONCTIONNERA PAS sans ce fichier !
+
+Le fichier `jspdf.umd.min.js` n'est **pas inclus** dans cette archive car il est trop volumineux (600 KB).
+
+**Vous DEVEZ le télécharger avant d'uploader sur GitHub.**
+
+---
+
+## 📥 COMMENT TÉLÉCHARGER jsPDF
+
+### Option 1 : Téléchargement direct (RECOMMANDÉ)
+
+```
+1. Ouvrir ce lien dans votre navigateur :
+   https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+
+2. Clic droit → "Enregistrer sous" ou "Save As"
+
+3. Nom du fichier : jspdf.umd.min.js
+
+4. Enregistrer dans le dossier App_DEIE_v1.1_CORRECTED/
+   (À côté des fichiers index.html, final.js, etc.)
+
+5. ✅ Terminé !
+```
+
+### Option 2 : Ligne de commande
+
+```bash
+cd App_DEIE_v1.1_CORRECTED
+curl -O https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+```
+
+---
+
+## ✅ VÉRIFICATION
+
+Votre dossier doit maintenant contenir :
+
+```
+App_DEIE_v1.1_CORRECTED/
+├── jspdf.umd.min.js  ← CE FICHIER DOIT EXISTER (600 KB)
+├── index.html
+├── final.html
+├── final.js
+├── about.html
+├── manifest.json
+├── service-worker.js
+└── ... (autres fichiers)
+```
+
+**Si jspdf.umd.min.js n'existe pas → L'app ne pourra pas générer de PDF !**
+
+---
+
+## 🔍 SYMPTÔMES SI jsPDF MANQUE
+
+Si vous uploadez sur GitHub sans jsPDF :
+
+```
+❌ Clic sur "Générer le PDF" → Rien ne se passe
+❌ Console (F12) → Erreur "jsPDF is not defined"
+❌ Aucun PDF ne se crée
+```
+
+---
+
+## 💡 ALTERNATIVE : Utiliser le CDN (pas recommandé)
+
+Si vous ne voulez vraiment pas télécharger jsPDF, vous pouvez utiliser le CDN :
+
+**Modifier final.html :**
+
+Chercher la ligne ~64-67 :
+```html
+<!-- Version locale (recommandée) -->
+<script src="jspdf.umd.min.js"></script>
+```
+
+Remplacer par :
+```html
+<!-- Version CDN (nécessite connexion Internet) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+```
+
+**Inconvénients du CDN :**
+- ❌ Nécessite connexion Internet
+- ❌ Mode offline ne fonctionne pas
+- ❌ Plus lent (téléchargement à chaque utilisation)
+- ⚠️ Dépendance externe
+
+**Avantages version locale :**
+- ✅ Fonctionne en mode offline
+- ✅ Plus rapide
+- ✅ Pas de dépendance externe
+- ✅ Recommandé pour PWA
+
+---
+
+## 🚀 APRÈS LE TÉLÉCHARGEMENT
+
+Une fois jsPDF téléchargé :
+
+1. ✅ Vérifier que le fichier existe (600 KB)
+2. ✅ Uploader TOUS les fichiers sur GitHub (y compris jsPDF)
+3. ✅ Activer GitHub Pages
+4. ✅ Tester l'app
+5. ✅ Générer un PDF pour vérifier
+
+---
+
+## 📝 CHECKLIST
+
+```
+□ jsPDF téléchargé depuis le CDN
+□ Fichier nommé exactement : jspdf.umd.min.js
+□ Fichier placé dans App_DEIE_v1.1_CORRECTED/
+□ Taille du fichier : ~600 KB
+□ ✅ Prêt pour l'upload sur GitHub
+```
+
+---
+
+**Ne sautez pas cette étape ! C'est obligatoire pour que l'app fonctionne.** ⚠️
+
+---
+
+© 2026 Olivier Guillemard

@@ -1,0 +1,46 @@
+LICENCE D'UTILISATION
+Application Essais DEIE v1.1
+
+Copyright © 2026 Olivier Guillemard
+Tous droits réservés
+
+================================================================================
+USAGE INTERNE ENEDIS UNIQUEMENT
+================================================================================
+
+Cette application et son code source sont la propriété exclusive de :
+Olivier Guillemard
+
+DROITS ACCORDÉS :
+- L'utilisation de cette application est autorisée UNIQUEMENT pour un usage 
+  interne au sein d'ENEDIS et de ses filiales.
+- Les employés et contractants d'ENEDIS sont autorisés à utiliser cette 
+  application dans le cadre de leurs activités professionnelles liées aux 
+  essais DEIE.
+
+RESTRICTIONS :
+- Toute redistribution, modification, reproduction ou utilisation en dehors 
+  du cadre d'ENEDIS est STRICTEMENT INTERDITE sans autorisation écrite 
+  préalable de l'auteur.
+- Il est interdit de retirer les mentions de copyright et d'auteur.
+- Il est interdit de commercialiser cette application ou ses dérivés.
+- Il est interdit de copier le code source pour des projets tiers.
+
+CLAUSE DE NON-GARANTIE :
+Cette application est fournie "EN L'ÉTAT", sans garantie d'aucune sorte, 
+explicite ou implicite. L'auteur ne peut être tenu responsable des dommages 
+directs ou indirects résultant de l'utilisation de cette application.
+
+PROPRIÉTÉ INTELLECTUELLE :
+Tous les droits de propriété intellectuelle relatifs à cette application, 
+y compris mais sans s'y limiter : le code source, l'interface utilisateur, 
+la documentation, les algorithmes et la structure de données, appartiennent 
+exclusivement à Olivier Guillemard.
+
+CONTACT :
+Pour toute demande d'autorisation ou information, contacter l'auteur.
+
+Date de création : Février 2026
+Version : 1.1
+
+================================================================================

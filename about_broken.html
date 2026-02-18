@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>À propos - Essais DEIE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>À propos</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <section class="card">
+      <h2>📱 Application Essais DEIE</h2>
+      <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #1424DB; margin: 20px 0;">
+        Version 1.1
+      </p>
+      <p style="text-align: center; color: #666; margin-bottom: 30px;">
+        Février 2026
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>👤 Auteur</h2>
+      <p style="font-size: 1.1rem; margin: 15px 0;">
+        <strong>Olivier Guillemard</strong>
+      </p>
+      <p style="color: #666;">
+        Développeur de l'application
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>📜 Droits d'auteur</h2>
+      <p style="margin: 15px 0;">
+        <strong>Copyright © 2026 Olivier Guillemard</strong>
+      </p>
+      <p style="color: #666; margin: 10px 0;">
+        Tous droits réservés. Cette application et son code source sont la propriété exclusive de l'auteur.
+      </p>
+      <div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 6px;">
+        <p style="margin: 0; font-weight: bold; color: #856404;">
+          ⚠️ Usage interne ENEDIS uniquement
+        </p>
+        <p style="margin: 10px 0 0 0; color: #856404; font-size: 0.9rem;">
+          Toute reproduction, modification ou redistribution non autorisée est strictement interdite.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📋 Description</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        Application web mobile pour la gestion et la documentation des procédures d'essais DEIE 
+        (Dispositif d'Échange d'Information d'Exploitation) conformes aux normes ENEDIS.
+      </p>
+      <h3 style="color: #1424DB; margin-top: 20px;">Fonctionnalités principales :</h3>
+      <ul style="line-height: 1.8; margin-left: 20px;">
+        <li>Configuration guidée des essais (MES/MODIF/DEP)</li>
+        <li>Tests de 10 fonctions DEIE/eDEIE</li>
+        <li>Saisie des résultats OK/NOK avec commentaires</li>
+        <li>Signatures électroniques tactiles</li>
+        <li>Génération PDF professionnelle</li>
+        <li>Sauvegarde automatique</li>
+        <li>Mode sombre</li>
+        <li>Géolocalisation GPS</li>
+        <li>Profils techniciens</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>🔧 Technologies</h2>
+      <ul style="line-height: 1.8; margin-left: 20px;">
+        <li>HTML5 / CSS3 / JavaScript ES6</li>
+        <li>Progressive Web App (PWA)</li>
+        <li>jsPDF (génération PDF)</li>
+        <li>localStorage (persistance)</li>
+        <li>Canvas API (signatures)</li>
+        <li>Geolocation API (GPS)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>📄 Licence</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        Cette application est distribuée sous une licence propriétaire stricte.<br>
+        <a href="LICENSE.txt" style="color: #1424DB; text-decoration: underline;">
+          Lire la licence complète (LICENSE.txt)
+        </a>
+      </p>
+      <div style="background-color: #f5f5f5; padding: 15px; border-radius: 6px; margin-top: 15px;">
+        <p style="margin: 0; font-size: 0.85rem; color: #666; line-height: 1.5;">
+          <strong>En résumé :</strong><br>
+          ✅ Utilisation autorisée pour usage interne ENEDIS<br>
+          ❌ Redistribution interdite<br>
+          ❌ Modification interdite sans autorisation<br>
+          ❌ Commercialisation interdite<br>
+          ❌ Retrait des mentions d'auteur interdit
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🔒 Mes données personnelles (RGPD)</h2>
+      <p style="margin: 15px 0; color: #666; line-height: 1.6;">
+        Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez 
+        de droits sur vos données personnelles stockées par cette application.
+      </p>
+
+      <div style="background: #e3f2fd; padding: 15px; border-left: 4px solid #1424DB; border-radius: 6px; margin: 20px 0;">
+        <h3 style="margin-top: 0; color: #1424DB;">📋 Données stockées localement :</h3>
+        <ul style="line-height: 1.8; margin: 10px 0;">
+          <li>Profil technicien (nom, base Enedis)</li>
+          <li>Configuration SharePoint</li>
+          <li>Données des essais en cours (temporaire, max 90 jours)</li>
+          <li>Signatures électroniques (jusqu'à génération du PDF)</li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 25px;">
+        <button type="button" class="secondary-btn" id="btnExportData" style="background: #2196F3; color: white;">
+          📥 Exporter mes données (JSON)
+        </button>
+        
+        <button type="button" class="secondary-btn" id="btnDeleteAllData" style="background: #d32f2f; color: white;">
+          🗑️ Supprimer toutes mes données
+        </button>
+
+        <a href="confidentialite.html" class="secondary-btn" style="background: #1424DB; color: white; text-decoration: none; text-align: center;">
+          📄 Consulter la politique de confidentialité
+        </a>
+      </div>
+
+      <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; margin-top: 20px;">
+        <p style="margin: 0; font-size: 0.9rem; color: #856404; line-height: 1.6;">
+          <strong>ℹ️ Vos droits RGPD :</strong><br>
+          • Droit d'accès à vos données (export)<br>
+          • Droit de rectification (modification)<br>
+          • Droit à l'effacement (suppression)<br>
+          • Droit à la portabilité (export JSON)<br><br>
+          Pour toute question : <a href="/cdn-cgi/l/email-protection#3256425d72575c57565b411c5440" style="color: #856404; text-decoration: underline;"><span class="__cf_email__" data-cfemail="bbdfcbd4fbded5dedfd2c895ddc9">[email&#160;protected]</span></a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>⚙️ Configuration SharePoint</h2>
+      <p style="margin: 15px 0; color: #666;">
+        Configurez l'accès à votre dossier SharePoint pour l'archivage manuel des PV.
+      </p>
+      
+      <div style="margin-top: 20px;">
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+            📂 Lien direct vers votre dossier SharePoint :
+          </label>
+          <input 
+            type="text" 
+            id="sharepointFolderUrl" 
+            placeholder="Collez le lien complet de votre dossier ici"
+            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;"
+          />
+          <small style="color: #666; font-size: 0.85rem; margin-top: 5px; display: block;">
+            💡 Comment obtenir le lien :<br>
+            1. Ouvrez Safari et allez dans votre dossier SharePoint "PV d'essais"<br>
+            2. Copiez l'URL complète de la barre d'adresse<br>
+            3. Collez-la ici<br>
+            Exemple : https://enedis.sharepoint.com/sites/MonSite/Documents/PV%20d'essais
+          </small>
+        </div>
+        
+        <div style="margin-bottom: 20px; padding-top: 10px; border-top: 1px solid #e0e0e0;">
+          <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 15px;">
+            <input type="checkbox" id="archivageManuelEnabled" style="margin-right: 10px; width: 20px; height: 20px;" checked>
+            <span style="font-weight: bold;">📂 Activer l'archivage manuel</span>
+          </label>
+          <small style="color: #666; font-size: 0.85rem; margin-left: 30px; display: block;">
+            Permet d'ouvrir SharePoint pour archiver manuellement les PDF
+          </small>
+        </div>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button type="button" class="primary-btn" id="btnSaveSharePoint" style="flex: 1;">
+            💾 Enregistrer la configuration
+          </button>
+          <button type="button" class="secondary-btn" id="btnTestSharePoint" style="flex: 1;">
+            🧪 Tester le lien
+          </button>
+        </div>
+        
+        <div id="sharepointStatus" style="margin-top: 15px; padding: 10px; border-radius: 6px; display: none;"></div>
+      </div>
+      
+      <div style="background-color: #e3f2fd; border-left: 4px solid #2196F3; padding: 15px; margin-top: 20px; border-radius: 6px;">
+        <p style="margin: 0; font-size: 0.9rem; color: #1565C0;">
+          ℹ️ <strong>Note :</strong> Utilisez le lien direct de votre dossier SharePoint. 
+          L'app l'ouvrira automatiquement quand vous cliquerez sur "Archivage manuel".
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📞 Contact</h2>
+      <p style="margin: 15px 0; color: #666;">
+        Pour toute question, demande d'autorisation ou signalement de bug, 
+        veuillez contacter l'auteur.
+      </p>
+    </section>
+
+    <div class="form-actions">
+      <button type="button" class="primary-btn" onclick="window.location.href='index.html'">
+        Retour à l'accueil
+      </button>
+    </div>
+
+  </main>
+
+  <!-- FOOTER COPYRIGHT -->
+  <footer class="copyright-footer">
+    <p>© 2026 Olivier Guillemard - Tous droits réservés</p>
+    <p class="version">Application Essais DEIE v1.1</p>
+    <p class="usage">Usage interne ENEDIS uniquement</p>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="sharepoint-integration.js?v=20260217"></script>
+  <script defer src="ux-mobile.js?v=20260217"></script>
+  
+  <script>
+    // ============================================
+    // GESTION RGPD - EXPORT ET SUPPRESSION DONNÉES
+    // ============================================
+
+    // Export des données personnelles (Article 20 RGPD - Portabilité)
+    document.getElementById("btnExportData")?.addEventListener("click", () => {
+      try {
+        // Collecter toutes les données de l'utilisateur
+        const allData = {
+          exportDate: new Date().toISOString(),
+          exportVersion: "1.1",
+          
+          profilTechnicien: JSON.parse(localStorage.getItem("profilTechnicien") || "null"),
+          sharepointConfig: JSON.parse(localStorage.getItem("sharepointConfig") || "null"),
+          
+          // Données de session en cours (si existantes)
+          choixEssais: JSON.parse(localStorage.getItem("choixEssais") || "null"),
+          rapportEssais: JSON.parse(localStorage.getItem("rapportEssais") || "null"),
+          dataTests: JSON.parse(localStorage.getItem("dataTests") || "null"),
+          
+          // Métadonnées
+          lastAutoSave: JSON.parse(localStorage.getItem("lastAutoSave") || "null"),
+          darkModeEnabled: localStorage.getItem("darkModeEnabled"),
+          
+          // Info pour l'utilisateur
+          note: "Export RGPD - Toutes vos données personnelles stockées localement dans l'application Essais DEIE"
+        };
+
+        // Créer le fichier JSON
+        const dataStr = JSON.stringify(allData, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        // Télécharger
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'mes-donnees-DEIE-' + new Date().toISOString().split('T')[0] + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        alert("✅ Export réussi !\n\nVos données ont été exportées au format JSON.\n\nVous pouvez les consulter, les archiver ou les transmettre conformément à votre droit à la portabilité (Article 20 RGPD).");
+        
+      } catch (error) {
+        console.error("Erreur export données:", error);
+        alert("❌ Erreur lors de l'export des données.\n\n" + error.message);
+      }
+    });
+
+    // Suppression de toutes les données personnelles (Article 17 RGPD - Effacement)
+    document.getElementById("btnDeleteAllData")?.addEventListener("click", () => {
+      const confirmed = confirm(
+        "⚠️ SUPPRESSION DE VOS DONNÉES PERSONNELLES\n\n" +
+        "Conformément à l'Article 17 du RGPD (droit à l'effacement), vous pouvez supprimer toutes vos données personnelles.\n\n" +
+        "ATTENTION : Cette action est IRRÉVERSIBLE.\n\n" +
+        "Seront supprimés :\n" +
+        "• Votre profil technicien\n" +
+        "• Les essais en cours (non finalisés)\n" +
+        "• La configuration SharePoint\n" +
+        "• Toutes les sauvegardes automatiques\n\n" +
+        "⚠️ Les PDF déjà générés et archivés sur SharePoint ne seront PAS supprimés (obligation légale de conservation 10 ans).\n\n" +
+        "Voulez-vous vraiment SUPPRIMER toutes vos données ?"
+      );
+      
+      if (!confirmed) return;
+
+      // Double confirmation pour action critique
+      const doubleConfirm = confirm(
+        "⚠️ CONFIRMATION FINALE\n\n" +
+        "Êtes-vous ABSOLUMENT SÛR(E) de vouloir supprimer toutes vos données ?\n\n" +
+        "Cette action ne peut pas être annulée."
+      );
+
+      if (!doubleConfirm) return;
+
+      try {
+        // Supprimer toutes les données localStorage
+        localStorage.clear();
+        
+        // Message de confirmation
+        alert(
+          "✅ SUPPRESSION EFFECTUÉE\n\n" +
+          "Toutes vos données personnelles stockées localement ont été supprimées.\n\n" +
+          "Conformément au RGPD :\n" +
+          "• Données locales : SUPPRIMÉES ✓\n" +
+          "• Archives légales (PV archivés) : Conservées 10 ans (obligation légale)\n\n" +
+          "Vous allez être redirigé vers l'accueil."
+        );
+
+        // Rediriger vers l'accueil
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+
+      } catch (error) {
+        console.error("Erreur suppression données:", error);
+        alert("❌ Erreur lors de la suppression des données.\n\n" + error.message);
+      }
+    });
+
+    // ============================================
+    // CONFIGURATION SHAREPOINT (code existant)
+    // ============================================
+    
+    // Charger la configuration SharePoint existante
+    window.addEventListener('load', () => {
+      const config = localStorage.getItem("sharepointConfig");
+      if (config) {
+        const parsed = JSON.parse(config);
+        // Charger le lien complet du dossier
+        document.getElementById("sharepointFolderUrl").value = parsed.folderUrl || "";
+        document.getElementById("archivageManuelEnabled").checked = parsed.archivageManuelEnabled !== false;
+      }
+    });
+    
+    // Sauvegarder la configuration SharePoint
+    document.getElementById("btnSaveSharePoint")?.addEventListener("click", () => {
+      const folderUrl = document.getElementById("sharepointFolderUrl").value.trim();
+      const archivageManuelEnabled = document.getElementById("archivageManuelEnabled").checked;
+      
+      if (archivageManuelEnabled && !folderUrl) {
+        alert("❌ Veuillez remplir le lien du dossier SharePoint.");
+        return;
+      }
+      
+      // Valider l'URL
+      if (archivageManuelEnabled && !folderUrl.startsWith("https://")) {
+        alert("❌ Le lien doit commencer par https://");
+        return;
+      }
+      
+      // Sauvegarder la config
+      const config = {
+        folderUrl: folderUrl,
+        archivageManuelEnabled: archivageManuelEnabled
+      };
+      localStorage.setItem("sharepointConfig", JSON.stringify(config));
+      
+      const statusDiv = document.getElementById("sharepointStatus");
+      statusDiv.style.display = "block";
+      statusDiv.style.backgroundColor = "#d4edda";
+      statusDiv.style.borderLeft = "4px solid #28a745";
+      statusDiv.style.color = "#155724";
+      
+      let message = "✓ Configuration enregistrée avec succès !<br>";
+      if (archivageManuelEnabled) message += "• Archivage manuel activé";
+      
+      statusDiv.innerHTML = message;
+      
+      setTimeout(() => {
+        statusDiv.style.display = "none";
+      }, 3000);
+    });
+    
+    // Tester le lien SharePoint
+    document.getElementById("btnTestSharePoint")?.addEventListener("click", () => {
+      const folderUrl = document.getElementById("sharepointFolderUrl").value.trim();
+      const statusDiv = document.getElementById("sharepointStatus");
+      
+      if (!folderUrl) {
+        alert("❌ Veuillez d'abord remplir le lien du dossier SharePoint.");
+        return;
+      }
+      
+      statusDiv.style.display = "block";
+      statusDiv.style.backgroundColor = "#fff3cd";
+      statusDiv.style.borderLeft = "4px solid #ffc107";
+      statusDiv.style.color = "#856404";
+      statusDiv.innerHTML = "⏳ Validation en cours...";
+      
+      // Validation de l'URL
+      try {
+        // Vérifier que c'est une URL valide
+        const urlObj = new URL(folderUrl);
+        
+        // Vérifier que c'est bien SharePoint
+        if (!urlObj.hostname.includes('sharepoint.com')) {
+          throw new Error("Le lien ne semble pas être un dossier SharePoint");
+        }
+        
+        // Afficher succès
+        statusDiv.style.backgroundColor = "#d4edda";
+        statusDiv.style.borderLeft = "4px solid #28a745";
+        statusDiv.style.color = "#155724";
+        
+        // Créer les éléments de façon sécurisée
+        statusDiv.innerHTML = '';
+        
+        const successMsg = document.createElement('div');
+        successMsg.innerHTML = '✓ Lien valide !';
+        statusDiv.appendChild(successMsg);
+        
+        const urlInfo = document.createElement('small');
+        urlInfo.style.fontSize = '0.85em';
+        urlInfo.style.marginTop = '5px';
+        urlInfo.style.display = 'block';
+        urlInfo.textContent = 'Lien : ' + folderUrl;
+        statusDiv.appendChild(urlInfo);
+        
+        const openBtn = document.createElement('button');
+        openBtn.textContent = '🔗 Ouvrir le dossier pour vérifier';
+        openBtn.style.cssText = 'margin-top: 10px; padding: 5px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;';
+        openBtn.addEventListener('click', () => {
+          window.open(folderUrl, '_blank');
+        });
+        statusDiv.appendChild(openBtn);
+        
+      } catch (error) {
+        statusDiv.style.backgroundColor = "#f8d7da";
+        statusDiv.style.borderLeft = "4px solid #dc3545";
+        statusDiv.style.color = "#721c24";
+        statusDiv.innerHTML = `
+          ❌ Lien invalide : ${error.message}<br>
+          <small style="font-size: 0.85em; margin-top: 5px; display: block;">
+            Assurez-vous de copier le lien complet depuis Safari quand vous êtes dans le dossier.
+          </small>
+        `;
+      }
+      
+      setTimeout(() => {
+        statusDiv.style.display = "none";
+      }, 8000);
+    });
+  </script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

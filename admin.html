@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>PV d'essais – Administratif</title>
+
+  <!-- Mobile first -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Lien vers le CSS -->
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>PV d'essais – Administratif</h1>
+    <button id="btnGererProfil" style="position: absolute; top: 20px; left: 20px; background: white; color: #1424DB; border: 2px solid white; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; z-index: 100;">
+      👤 Mon Profil
+    </button>
+  </header>
+
+  <!-- MODAL PROFIL TECHNICIEN -->
+  <div id="modalProfil" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Mon Profil Technicien</h2>
+      <p style="color: #666; font-size: 0.9rem;">Ces informations seront automatiquement pré-remplies lors de vos prochains essais.</p>
+      
+      <div class="field">
+        <label>Nom et prénom *</label>
+        <input type="text" id="profilNomTechnicien" placeholder="Ex: Jean Dupont">
+      </div>
+
+      <div class="field">
+        <label>Base Enedis *</label>
+        <input type="text" id="profilBaseEnedis" placeholder="Ex: Lyon Nord">
+      </div>
+
+      <div class="field">
+        <label>Téléphone (optionnel)</label>
+        <input type="tel" id="profilTelephoneTechnicien" placeholder="Ex: 06 12 34 56 78">
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button type="button" class="primary-btn" id="btnSauvegarderProfil">
+          Sauvegarder
+        </button>
+        <button type="button" class="secondary-btn" id="btnSupprimerProfil">
+          Supprimer le profil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENU BLANC -->
+  <main class="container">
+
+    <!-- BLOC RECAP -->
+     <section class="recap">
+  <h2>Récapitulatif des Choix</h2>
+
+  <p><strong>Motif :</strong> <span id="recapMotif"></span></p>
+  <p><strong>Type de protection :</strong> <span id="recapProtection"></span></p>
+  <p><strong>Type de coffret :</strong> <span id="recapCoffret"></span></p>
+</section>
+
+    <!-- BLOC CONTRÔLE -->
+    <section class="card">
+      <h2>Bloc Contrôle</h2>
+
+      <div class="field">
+        <label>Date du contrôle</label>
+        <input type="date" id="dateControle">
+      </div>
+
+      <div class="field">
+        <label>Base Enedis</label>
+        <input type="text" id="baseEnedis">
+      </div>
+
+      <div class="field">
+        <label>Nom technicien Enedis</label>
+        <input type="text" id="NomTechEnedis">
+      </div>
+
+      <div class="field">
+        <label>Présence du client</label>
+        <select id="presenceClient">
+          <option value="">-- Choisir --</option>
+          <option value="OUI">OUI</option>
+          <option value="NON">NON</option>
+        </select>
+      </div>
+
+      <div class="field" id="fieldNomInterClient">
+        <label>Nom intervenant client</label>
+        <input type="text" id="NomInterClient" placeholder="Nom et prénom du représentant client">
+      </div>
+    </section>
+
+    <!-- INSTALLATION -->
+    <section class="card">
+      <h2>Installation</h2>
+
+      <div class="field">
+  <label for="typeCentrale">Type de centrale</label>
+  <select id="typeCentrale" name="typeCentrale">
+    <option value="">— Sélectionner —</option>
+    <option value="eolien">ÉOLIEN</option>
+    <option value="photovoltaïque">PHOTOVOLTAÏQUE</option>
+    <option value="hydroélectrique">HYDROELECTRIQUE</option>
+    <option value="cogeneration_gaz">COGENERATION GAZ</option>
+    <option value="batterie">BATTERIES</option>
+  </select>
+</div>
+
+      <div class="field">
+        <label>Nom exploitant</label>
+        <input type="text" id="NomExploitant">
+      </div>
+
+      <div class="field">
+        <label>Coordonnées téléphoniques</label>
+        <input type="tel" id="CoordonneesTEL">
+      </div>
+
+      <div class="field field-required">
+        <label>Nom du site <span class="required-indicator">*</span></label>
+        <input type="text" id="NomSite" required>
+        <small class="field-hint">Champ obligatoire</small>
+      </div>
+
+      <div class="field">
+        <label>Coordonnées GPS</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" placeholder="Latitude, Longitude" id="GPS" style="flex: 1;">
+          <button type="button" id="btnGeolocalisation" class="secondary-btn" style="min-width: auto; padding: 10px 15px; margin: 0;">
+            📍 GPS
+          </button>
+        </div>
+        <small id="gpsStatus" style="color: #666; font-size: 0.85rem; display: none; margin-top: 5px;"></small>
+        <div style="background: #e3f2fd; padding: 10px; border-left: 3px solid #2196F3; border-radius: 4px; margin-top: 8px;">
+          <small style="color: #1565C0; font-size: 0.85rem; line-height: 1.4; display: block;">
+            💡 <strong>Astuce :</strong> Le bouton GPS remplira automatiquement l'adresse, le code postal et la commune grâce à vos coordonnées.
+          </small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Code postal</label>
+        <input type="text" id="CodePostal" placeholder="Ex: 72000" inputmode="numeric" maxlength="5">
+      </div>
+
+      <div class="field">
+        <label>Commune</label>
+        <input type="text" id="Commune" placeholder="Ex: Le Mans">
+      </div>
+
+      <div class="field">
+        <label>Adresse</label>
+        <input type="text" id="Adresse" placeholder="Ex: 12 rue de la Paix"></div>
+
+      <div class="field">
+        <label>Numéro de contrat</label>
+        <input type="text" id="Contrat">
+      </div>
+
+      <div class="field">
+        <label>Puissance installée (kW)</label>
+        <input type="number" id="PuissanceInstall">
+      </div>
+
+      <div class="field">
+        <label>Poste source</label>
+        <input type="text" id="PS">
+      </div>
+
+      <div class="field">
+        <label>Départ HTA</label>
+        <input type="text" id="DepHTA">
+      </div>
+
+      <div class="field field-required">
+        <label>Code GDO <span class="required-indicator">*</span></label>
+        <input type="text" id="GDO" required>
+        <small class="field-hint">Champ obligatoire</small>
+      </div>
+
+      <div class="field">
+        <label>PRM</label>
+        <input type="text" id="PRM">
+      </div>
+    </section>
+
+    <!-- BLOC TECHNIQUE -->
+    <section class="card">
+      <h2>Technique</h2>
+
+      <div class="field">
+        <label>Délai maximum de découplage (min)</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" id="delaisDecouplage" placeholder="Ex: 10" style="width: 100px;">
+      </div>
+
+      <div class="field">
+        <label>Temps de reconfiguration (s)</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" id="tmpReconfiguration" placeholder="Ex: 30" style="width: 100px;">
+      </div>
+
+      <div class="field">
+        <label>Valeur repli P0</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" id="valeurP0" placeholder="Ex: 0" style="width: 100px;">
+      </div>
+
+      <div class="field">
+        <label>Valeur repli Q0</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" id="valeurQ0" placeholder="Ex: 0" style="width: 100px;">
+      </div>
+    </section>
+
+    <!-- BLOC COMPTEUR -->
+    <section class="card">
+      <h2>Infos Compteur</h2>
+
+      <div class="field">
+        <label for="typeCompteur">Type de Compteur</label>
+  <select id="typeCompteur" name="typeCompteur">
+    <option value="">— Sélectionner —</option>
+    <option value="2Q">2Q</option>
+    <option value="4Q">4Q</option>
+  </select>
+</div>
+
+      <div class="field">
+        <label>Constructeur</label>
+        <input type="text" id="constructeurCompteur">
+      </div>
+
+      <div class="field">
+        <label>Référence</label>
+        <input type="text" id="referenceCompteur">
+      </div>
+
+      <div class="field">
+        <label>Numéro de série</label>
+        <input type="text" id="numSerieCompteur">
+      </div>
+
+      <div class="field">
+        <label>Type de boîtier</label>
+        <input type="text" id="typeBoitier">
+      </div>
+    </section>
+    <!-- ACTIONS BOUTON SUIVANT-->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="secondary-btn"
+        id="btnSauvegarderQuitter"
+        style="margin-bottom: 10px;">
+        💾 Sauvegarder et quitter
+      </button>
+      <button
+        type="button"
+        class="primary-btn"
+        id="btnAdminSuivant">
+        Suivant
+      </button>
+    </div>
+
+  </main>
+
+  <footer style="text-align: center; padding: 20px; font-size: 0.85rem; color: #666; margin-top: 40px;">
+    <p>
+      © 2026 Enedis - Tous droits réservés<br>
+      <a href="confidentialite.html" style="color: #1424DB;">Politique de confidentialité</a> | 
+      <a href="about.html" style="color: #1424DB;">Mes données (RGPD)</a>
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="autosave.js?v=20260217"></script>
+  <script defer src="profil-technicien.js?v=20260217"></script>
+  <script defer src="ux-mobile.js?v=20260217"></script>
+  <script defer src="admin.js?v=20260217"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

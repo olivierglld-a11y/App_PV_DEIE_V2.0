@@ -1,0 +1,1187 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #2E2E2E;
+}
+
+.header {
+  background: linear-gradient(135deg, #1424DB 0%, #0d1a8f 100%);
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(20, 36, 219, 0.3);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5bc500 0%, #95CB39 100%);
+}
+
+.header h1 {
+  margin: 10px 0 5px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/*BOUTON DEMARRER */
+#startBtn {
+  background-color: #5bc500; /* vert enedis */
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+
+  min-width: 220px;
+  cursor: pointer;
+
+  display: block;
+  margin: 0 auto;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+ 
+}
+/*Effete survol*/
+#startBtn:hover {
+  background-color: #435e15;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+}
+
+.screen.active {
+  display: block;
+}
+
+.bloc {
+  margin-bottom: 30px;
+}
+
+.bloc h3 {
+  margin-bottom: 10px;
+}
+
+.choice-group {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.choice-group h3 {
+  margin-bottom: 20px;
+  color: #1424DB;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.choice-btn {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border: 2px solid #e0e0e0;
+  padding: 18px 28px;
+  margin: 8px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07),
+              0 1px 3px rgba(0, 0, 0, 0.06);
+  display: inline-block;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.choice-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(20, 36, 219, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.choice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12),
+              0 3px 6px rgba(0, 0, 0, 0.08);
+  border-color: #1424DB;
+}
+
+.choice-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.choice-btn.active {
+  background: linear-gradient(135deg, #5bc500 0%, #4db800 100%);
+  color: white;
+  border-color: #5bc500;
+  box-shadow: 0 6px 16px rgba(91, 197, 0, 0.3),
+              0 2px 8px rgba(91, 197, 0, 0.2);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+.choice-btn.active::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.choice-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#nextBtn {
+  background-color: #1424DB; /*BLEU ENEDIS */
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+
+  min-width: 220px;
+  cursor: pointer;
+
+  display: block;
+  margin: 0 auto;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+/* effet au survol */
+#nextBtn:hover {
+    background-color: #0033a0;
+}
+
+#nextBtn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #0033a0;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+/* Champs obligatoires */
+.field-required label {
+  position: relative;
+}
+
+.required-indicator {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-left: 4px;
+  font-size: 1.1rem;
+}
+
+.field-hint {
+  display: block;
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.field-required input:focus,
+.field-required select:focus {
+  border-color: #1424DB;
+  box-shadow: 0 0 0 3px rgba(20, 36, 219, 0.1);
+}
+
+.field-required input:invalid {
+  border-color: #d32f2f;
+}
+
+.field-required input:valid {
+  border-color: #5bc500;
+}
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+  width: 100%;
+  background: #5bc500; /* vert Enedis */
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+/* ==========================
+   ZONE BOUTON ACTION
+========================== */
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 40px;
+}
+
+/* Bouton CONTINUER */
+.primary-btn {
+  background-color: #0063AF; /* Bleu Enedis */
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+
+  min-width: 220px;
+  cursor: pointer;
+
+  display: block;
+  margin: 0 auto;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Effet au survol */
+.primary-btn:hover {
+  background-color: #004F8C;
+}
+
+/* Effet au clic */
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+.primary-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* ==========================
+   BOUTON SECONDAIRE
+========================== */
+
+.secondary-btn {
+  background-color: #E0E0E0;
+  color: #2E2E2E;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+
+  min-width: 220px;
+  cursor: pointer;
+
+  display: block;
+  margin: 0 auto;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.secondary-btn:hover {
+  background-color: #BDBDBD;
+}
+
+.secondary-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================
+   NAVIGATION TESTS
+========================== */
+
+.navigation-tests {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.navigation-tests button {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* ==========================
+   CHECKBOX LIST (DÉPANNAGE)
+========================== */
+
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #ffffff;
+}
+
+.checkbox-item:hover {
+  background-color: #f5f5f5;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox-item span {
+  font-size: 1rem;
+  color: #2E2E2E;
+}
+
+/* ==========================
+   PROGRESSION
+========================== */
+
+.progression {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #E0E0E0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #5bc500;
+  transition: width 0.3s ease;
+}
+
+/* ==========================
+   BOUTONS OK / NOK
+========================== */
+
+.field-oknok {
+  margin-bottom: 12px;
+}
+
+.field-oknok > div {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-oknok {
+  flex: 1;
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  color: #2E2E2E;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-oknok:hover {
+  background-color: #e8e8e8;
+}
+
+.btn-oknok.active-ok {
+  background-color: #5bc500;
+  color: white;
+  border-color: #5bc500;
+}
+
+.btn-oknok.active-nok {
+  background-color: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+/* ==========================
+   TEST ACTION
+========================== */
+
+.test-action {
+  margin-bottom: 24px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* ==========================
+   RECAP
+========================== */
+
+.recap {
+  background-color: #f0f4ff;
+  border-left: 4px solid #1424DB;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.recap h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #1424DB;
+}
+
+.recap p {
+  margin: 6px 0;
+}
+
+/* ==========================
+   SIGNATURE CANVAS
+========================== */
+
+.signature-canvas {
+  width: 100%;
+  height: 200px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ==========================
+   ACTIONS FORM
+========================== */
+
+.form-actions {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ==========================
+   MODAL PROFIL
+========================== */
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #1424DB;
+}
+
+/* ==========================
+   BOUTON TOGGLE THEME
+========================== */
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* Bouton À propos */
+.about-link {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.about-link:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* ==========================
+   TESTS - BLOCS ACTIONS
+========================== */
+
+.test-action {
+  background-color: #f9f9f9;
+  margin-bottom: 24px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.test-action p {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* ==========================
+   BOUTONS PLUS GROS (MOBILE)
+========================== */
+
+@media (max-width: 768px) {
+  .choice-btn {
+    padding: 20px 32px;
+    font-size: 1.05rem;
+    min-height: 60px;
+    min-width: 160px;
+    margin: 10px;
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-oknok {
+    padding: 14px 24px;
+    font-size: 1.1rem;
+    min-height: 50px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    padding: 16px 40px;
+    font-size: 17px;
+    min-height: 54px;
+  }
+
+  #startBtn,
+  #nextBtn {
+    padding: 18px 40px;
+    font-size: 18px;
+    min-height: 58px;
+  }
+}
+
+/* ==========================
+   MODE SOMBRE
+========================== */
+
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.dark-mode .header {
+  background-color: #0d1a8f;
+}
+
+.dark-mode .container {
+  background-color: #1a1a1a;
+}
+
+.dark-mode .card,
+.dark-mode .recap {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.dark-mode .card h2,
+.dark-mode .card h3,
+.dark-mode .recap h2 {
+  color: #5bc500;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #888;
+}
+
+.dark-mode .choice-btn {
+  background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+  border-color: #4a4a4a;
+  color: #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+              0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .choice-btn:hover {
+  background: linear-gradient(135deg, #4a4a4a 0%, #3d3d3d 100%);
+  border-color: #5bc500;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4),
+              0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .choice-btn.active {
+  background: linear-gradient(135deg, #5bc500 0%, #4db800 100%);
+  color: white;
+  border-color: #5bc500;
+  box-shadow: 0 6px 16px rgba(91, 197, 0, 0.4),
+              0 2px 8px rgba(91, 197, 0, 0.3);
+}
+
+.dark-mode .btn-oknok {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+.dark-mode .btn-oknok:hover {
+  background-color: #4a4a4a;
+}
+
+.dark-mode .btn-oknok.active-ok {
+  background-color: #5bc500;
+  color: white;
+  border-color: #5bc500;
+}
+
+.dark-mode .btn-oknok.active-nok {
+  background-color: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+.dark-mode .secondary-btn {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+.dark-mode .secondary-btn:hover {
+  background-color: #4a4a4a;
+}
+
+.dark-mode label {
+  color: #b0b0b0;
+}
+
+/* Recap items */
+.recap-item-ok {
+  background-color: #e8f5e9;
+  color: #000;
+}
+
+.recap-item-nok {
+  background-color: #ffebee;
+  color: #000;
+}
+
+.dark-mode .recap-item-ok {
+  background-color: #1b5e20;
+  color: #e0e0e0;
+}
+
+.dark-mode .recap-item-nok {
+  background-color: #b71c1c;
+  color: #e0e0e0;
+}
+
+/* Synthese globale */
+.synthese-ok {
+  background-color: #e8f5e9;
+}
+
+.synthese-nok {
+  background-color: #ffebee;
+}
+
+.dark-mode .synthese-ok {
+  background-color: #1b5e20;
+}
+
+.dark-mode .synthese-nok {
+  background-color: #b71c1c;
+}
+
+.dark-mode .progress-bar {
+  background-color: #3a3a3a;
+}
+
+.dark-mode .test-action {
+  background-color: #2a2a2a;
+}
+
+.dark-mode .modal-content {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.dark-mode .modal-content h2 {
+  color: #5bc500;
+}
+
+.dark-mode .close {
+  color: #888;
+}
+
+.dark-mode .close:hover {
+  color: #e0e0e0;
+}
+
+.dark-mode .signature-canvas {
+  background-color: #f0f0f0;
+}
+
+/* ==========================
+   FOOTER COPYRIGHT
+========================== */
+
+.copyright-footer {
+  background-color: #f5f5f5;
+  border-top: 3px solid #1424DB;
+  padding: 20px 10px;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.copyright-footer p {
+  margin: 5px 0;
+}
+
+.copyright-footer .version {
+  font-weight: bold;
+  color: #1424DB;
+}
+
+.copyright-footer .usage {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #999;
+}
+
+.dark-mode .copyright-footer {
+  background-color: #1a1a1a;
+  border-top-color: #5bc500;
+}
+
+.dark-mode .copyright-footer {
+  color: #999;
+}
+
+.dark-mode .copyright-footer .version {
+  color: #5bc500;
+}
+
+.dark-mode .copyright-footer .usage {
+  color: #666;
+}
+
+/* Blocs de tests fonctionnels */
+.dark-mode .test-cablage,
+.dark-mode .test-fonction {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.dark-mode .test-action {
+  background-color: #333 !important;
+}
+
+.dark-mode .test-action h4 {
+  color: #5bc500;
+}
+
+.dark-mode .test-action p {
+  color: #e0e0e0 !important;
+}
+
+.dark-mode .test-resultat {
+  color: #e0e0e0;
+}
+
+.dark-mode .progress-bar {
+  background-color: #3a3a3a;
+}
+
+.dark-mode .progress-fill {
+  background-color: #5bc500;
+}
+
+/* Sections et titres */
+.dark-mode section h2,
+.dark-mode section h3 {
+  color: #5bc500;
+}
+
+/* Page sélection des fonctions - checkboxes */
+.dark-mode .checkbox-item {
+  background-color: #2a2a2a !important;
+  border-color: #555 !important;
+}
+
+.dark-mode .checkbox-item:hover {
+  background-color: #3a3a3a !important;
+}
+
+.dark-mode .checkbox-item input[type="checkbox"]:checked + span {
+  color: #5bc500 !important;
+}
+
+.dark-mode .checkbox-item span {
+  color: #e0e0e0 !important;
+}
+
+.dark-mode .checkbox-item input[type="checkbox"] {
+  accent-color: #5bc500;
+}
+
+/* Champs de saisie dans les blocs de tests */
+.dark-mode .field-oknok label {
+  color: #e0e0e0 !important;
+}
+
+.dark-mode .commentaire-action {
+  background-color: #3a3a3a !important;
+  color: #e0e0e0 !important;
+  border-color: #555 !important;
+}
+
+.dark-mode .commentaire-action::placeholder {
+  color: #888 !important;
+}
+
+/* ==========================
+   BOUTON ENVOI EMAIL
+========================== */
+
+#btnEnvoyerEmail {
+  background-color: #5bc500 !important;
+  color: white !important;
+}
+
+#btnEnvoyerEmail:hover {
+  background-color: #4a9d00 !important;
+}
+
+/* Zone de téléchargement */
+#zoneTelechargement .primary-btn,
+#zoneTelechargement .secondary-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* ==========================
+   INDICATEUR DE PROGRESSION
+========================== */
+
+.progress-indicator {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  padding: 20px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.progress-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 8px;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 60px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Étape active */
+.progress-step.active .step-number {
+  background: linear-gradient(135deg, #1424DB 0%, #0d1a8f 100%);
+  color: white;
+  border-color: #1424DB;
+  box-shadow: 0 4px 12px rgba(20, 36, 219, 0.4);
+  transform: scale(1.15);
+}
+
+.progress-step.active .step-label {
+  color: #1424DB;
+  font-weight: 700;
+}
+
+/* Étape complétée */
+.progress-step.completed .step-number {
+  background: linear-gradient(135deg, #5bc500 0%, #4db800 100%);
+  color: white;
+  border-color: #5bc500;
+  box-shadow: 0 2px 6px rgba(91, 197, 0, 0.3);
+}
+
+.progress-step.completed .step-number::after {
+  content: '✓';
+  position: absolute;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.progress-step.completed .step-label {
+  color: #5bc500;
+  font-weight: 600;
+}
+
+/* Connecteurs entre étapes */
+.step-connector {
+  flex: 1;
+  height: 3px;
+  background: #e0e0e0;
+  min-width: 30px;
+  max-width: 80px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-connector.completed {
+  background: linear-gradient(90deg, #5bc500 0%, #4db800 100%);
+  box-shadow: 0 1px 3px rgba(91, 197, 0, 0.3);
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .progress-track {
+    justify-content: flex-start;
+    padding: 0 10px;
+  }
+  
+  .progress-step {
+    min-width: 50px;
+  }
+  
+  .step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+  
+  .step-label {
+    font-size: 0.7rem;
+  }
+  
+  .step-connector {
+    min-width: 20px;
+    max-width: 40px;
+  }
+}
+
+/* ==========================
+   MODE SOMBRE - INDICATEUR DE PROGRESSION
+========================== */
+
+.dark-mode .progress-indicator {
+  background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .step-number {
+  background: #3a3a3a;
+  color: #b0b0b0;
+  border-color: #4a4a4a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .step-label {
+  color: #b0b0b0;
+}
+
+/* Étape active en mode sombre */
+.dark-mode .progress-step.active .step-number {
+  background: linear-gradient(135deg, #1424DB 0%, #0d1a8f 100%);
+  color: white;
+  border-color: #1424DB;
+  box-shadow: 0 4px 12px rgba(20, 36, 219, 0.6);
+}
+
+.dark-mode .progress-step.active .step-label {
+  color: #5bc5ff;
+  font-weight: 700;
+}
+
+/* Étape complétée en mode sombre */
+.dark-mode .progress-step.completed .step-number {
+  background: linear-gradient(135deg, #5bc500 0%, #4db800 100%);
+  color: white;
+  border-color: #5bc500;
+  box-shadow: 0 2px 6px rgba(91, 197, 0, 0.5);
+}
+
+.dark-mode .progress-step.completed .step-label {
+  color: #5bc500;
+  font-weight: 600;
+}
+
+/* Connecteurs en mode sombre */
+.dark-mode .step-connector {
+  background: #3a3a3a;
+}
+
+.dark-mode .step-connector.completed {
+  background: linear-gradient(90deg, #5bc500 0%, #4db800 100%);
+  box-shadow: 0 1px 3px rgba(91, 197, 0, 0.5);
+}

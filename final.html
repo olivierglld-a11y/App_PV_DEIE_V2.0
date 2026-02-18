@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Génération du rapport</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+  <style>
+    /* Modale de progression */
+    #modalProgression {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    #modalProgression.actif { display: flex; }
+    .modal-progression-content {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 28px;
+      width: 88%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .spinner {
+      width: 52px; height: 52px;
+      border: 5px solid #e0e0e0;
+      border-top-color: #1424DB;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .progression-barre-bg {
+      background: #e0e0e0;
+      border-radius: 99px;
+      height: 10px;
+      margin: 16px 0 8px;
+      overflow: hidden;
+    }
+    .progression-barre {
+      height: 100%;
+      background: linear-gradient(90deg, #1424DB, #5bc500);
+      border-radius: 99px;
+      transition: width 0.35s ease;
+      width: 0%;
+    }
+    .progression-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 4px;
+    }
+    /* Toast succès */
+    #toastSucces {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2e7d32;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 2000;
+      white-space: nowrap;
+    }
+    #toastSucces.visible { display: block; animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { opacity:0; transform: translateX(-50%) translateY(20px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+    /* Bouton retry */
+    .btn-retry {
+      background: #f44336; color: white; border: none;
+      padding: 12px 24px; border-radius: 8px; font-size: 1rem;
+      cursor: pointer; margin-top: 12px; width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MODALE PROGRESSION -->
+  <div id="modalProgression">
+    <div class="modal-progression-content">
+      <div class="spinner" id="spinnerPDF"></div>
+      <h3 style="margin:0 0 6px; color:#1424DB;">Génération du PDF</h3>
+      <p id="progressionTexte" style="color:#444; margin:0 0 4px; font-size:0.95rem;">Initialisation...</p>
+      <div class="progression-barre-bg">
+        <div class="progression-barre" id="progressionBarre"></div>
+      </div>
+      <div class="progression-label" id="progressionPourcent">0%</div>
+    </div>
+  </div>
+
+  <!-- TOAST SUCCÈS -->
+  <div id="toastSucces">✓ PDF téléchargé avec succès !</div>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>Génération du rapport</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <section class="card">
+      <h2>✓ Essai terminé</h2>
+      <p style="margin: 20px 0; font-size: 1.1rem;">
+        L'essai est maintenant terminé. Vous pouvez générer le rapport PDF.
+      </p>
+
+      <div id="zoneBoutons" style="margin-top: 30px;">
+        <button type="button" class="primary-btn" id="btnGenererPDF">
+          📄 Générer le PDF
+        </button>
+      </div>
+
+      <div id="zoneTelechargement" style="display: none; margin-top: 20px; text-align: center;">
+
+        <!-- Message succès intégré -->
+        <div style="background:#e8f5e9; border:2px solid #5bc500; border-radius:10px; padding:16px; margin-bottom:16px;">
+          <p style="color:#2e7d32; font-weight:bold; font-size:1.1rem; margin:0 0 4px;">✓ PDF généré avec succès !</p>
+          <p id="nomFichierInfo" style="color:#555; font-size:0.85rem; margin:0;"></p>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+          <a id="lienTelecharger" href="#" download="PV_Essais_DEIE.pdf" class="primary-btn" style="display: inline-block; text-decoration: none;">
+            ⬇️ Télécharger le PDF
+          </a>
+          
+          <button type="button" class="secondary-btn" id="btnEnvoyerEmail" style="background-color: #5bc500; color: white;">
+            ✉️ Envoyer par email
+          </button>
+          
+          <button type="button" class="secondary-btn" id="btnUploadSharePoint" style="background-color: #0078d4; color: white; display: none;">
+            📤 Archiver automatiquement sur SharePoint
+          </button>
+          
+          <button type="button" class="secondary-btn" id="btnArchivageManuel" style="background-color: #0078d4; color: white; display: none;">
+            📂 Archiver manuellement sur SharePoint
+          </button>
+        </div>
+        
+        <p id="sharePointStatus" style="margin-top: 10px; font-size: 0.9rem; color: #666;"></p>
+        
+        <!-- Instructions archivage manuel -->
+        <div id="instructionsArchivageManuel" style="display: none; margin-top: 20px; padding: 15px; background-color: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 6px;">
+          <h4 style="margin-top: 0; color: #1565C0;">📋 Instructions d'archivage manuel</h4>
+          <ol style="margin: 10px 0; padding-left: 20px; line-height: 1.8; text-align: left;">
+            <li>Le PDF est téléchargé sur votre appareil</li>
+            <li>SharePoint s'ouvre dans votre dossier configuré</li>
+            <li>Cliquez sur "⊕" ou "Charger"</li>
+            <li>Sélectionnez le fichier PDF téléchargé</li>
+            <li>Validez l'upload</li>
+          </ol>
+          <div style="background-color: #fff3cd; padding: 10px; border-radius: 4px; margin-top: 10px;">
+            <strong>💡 Nom du fichier :</strong> <code id="nomFichierSuggere" style="background: white; padding: 2px 6px; border-radius: 3px; font-size:0.8rem;"></code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone erreur avec bouton réessayer -->
+      <div id="zoneErreur" style="display:none; margin-top:20px; text-align:center;">
+        <div style="background:#fdecea; border:2px solid #f44336; border-radius:10px; padding:16px;">
+          <p style="color:#c62828; font-weight:bold; margin:0 0 8px;">❌ Erreur lors de la génération</p>
+          <p id="messageErreur" style="color:#555; font-size:0.9rem; margin:0;"></p>
+        </div>
+        <button class="btn-retry" id="btnReessayer">🔄 Réessayer</button>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <button type="button" class="secondary-btn" id="btnNouvelEssai" style="width: 100%;">
+        Commencer un nouvel essai
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Bibliothèque jsPDF -->
+  <script src="jspdf.umd.min.js?v=20260217"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+  <script defer src="sharepoint-integration.js?v=20260217"></script>
+  <script defer src="final.js?v=20260217"></script>
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

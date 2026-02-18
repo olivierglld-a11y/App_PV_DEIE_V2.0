@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Signature Contrôleur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>Signature du contrôleur</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <section class="card">
+      <h2>Signature du contrôleur (Enedis)</h2>
+
+      <div class="field">
+        <label>Date de signature</label>
+        <input type="text" id="dateSignatureControleur" readonly>
+      </div>
+
+      <div class="field">
+        <label>Signature tactile</label>
+        <canvas id="canvasSignatureControleur" class="signature-canvas"></canvas>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button type="button" class="secondary-btn" id="btnEffacerControleur">
+          Effacer
+        </button>
+      </div>
+
+      <!-- CONSENTEMENT RGPD -->
+      <div style="background: #e3f2fd; padding: 20px; border-left: 4px solid #1424DB; border-radius: 6px; margin-top: 30px;">
+        <h3 style="margin-top: 0; color: #1424DB;">🔒 Protection des données personnelles</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; margin: 10px 0;">
+          En signant ce procès-verbal, votre signature électronique (considérée comme donnée biométrique) 
+          sera collectée et conservée conformément au RGPD.
+        </p>
+        <div style="display: flex; align-items: flex-start; gap: 10px; margin-top: 15px;">
+          <input type="checkbox" id="consentementRGPD" style="margin-top: 4px; width: 20px; height: 20px; cursor: pointer;">
+          <label for="consentementRGPD" style="cursor: pointer; flex: 1; font-size: 0.95rem; line-height: 1.5;">
+            J'ai pris connaissance de la 
+            <a href="confidentialite.html" target="_blank" style="color: #1424DB; text-decoration: underline; font-weight: bold;">
+              politique de confidentialité
+            </a> 
+            et j'accepte que ma signature soit collectée, traitée et conservée pendant 10 ans dans le cadre 
+            de ce contrôle réglementaire DEIE, conformément aux Articles 6.1.c et 9.2.b du RGPD.
+          </label>
+        </div>
+        <p style="font-size: 0.85rem; color: #666; margin: 10px 0 0 30px; font-style: italic;">
+          Cette case doit être cochée pour pouvoir valider la signature.
+        </p>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <div class="form-actions">
+      <button type="button" class="primary-btn" id="btnValiderControleur" disabled>
+        Valider
+      </button>
+    </div>
+
+  </main>
+
+  <script defer src="signature-controleur.js?v=20260217"></script>
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

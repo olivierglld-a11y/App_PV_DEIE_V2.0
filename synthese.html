@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Essais DEIE - Synthèse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>Synthèse globale</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <section class="card">
+      <h2>Synthèse de l'ensemble des tests</h2>
+      
+      <div id="syntheseGlobale" style="padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+        <p id="texteSyntheseGlobale" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 16px;"></p>
+      </div>
+
+      <div id="listeFonctionsNOK" style="display: none;">
+        <h3>Fonctions non conformes :</h3>
+        <ul id="detailNOK" style="color: #d32f2f;"></ul>
+      </div>
+    </section>
+
+    <!-- NAVIGATION -->
+    <div class="form-actions">
+      <button type="button" class="primary-btn" id="btnSignatures">
+        Passer aux signatures
+      </button>
+    </div>
+
+  </main>
+
+  <script defer src="synthese.js?v=20260217"></script>
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

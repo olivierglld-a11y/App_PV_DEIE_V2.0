@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Essais DEIE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Application de gestion des essais DEIE - Enedis">
+    <meta name="theme-color" content="#1424DB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Essais DEIE">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons pour iPhone -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" href="icon-192.png">
+
+    <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+<body>
+    
+    <header class="header">
+        <img src= "enedis.png" alt="Enedis" class="logo">
+        <h1>Essais DEIE</h1>
+        <p>Procédure guidée</p>
+        <a href="about.html" class="about-link" title="À propos">ℹ️</a>
+    </header>
+
+ <main class="container">
+
+  <!-- SCREEN 1 : ACCUEIL -->
+  <section id="screenAccueil" class="screen active">
+    <button id="startBtn">DÉMARRER UN ESSAI</button>
+    
+    <!-- Message de reprise si session en cours -->
+    <div id="sessionEnCours" style="display: none; margin-top: 30px; padding: 20px; background-color: #fff3cd; border-radius: 8px; border: 2px solid #ffc107;">
+      <h3 style="margin-top: 0; color: #856404;">Session en cours détectée</h3>
+      <p id="sessionInfo" style="margin: 10px 0; color: #856404;"></p>
+      <div style="display: flex; gap: 10px; margin-top: 15px; flex-direction: column;">
+        <button id="btnReprendre" class="primary-btn" style="background-color: #5bc500;">
+          Reprendre où je me suis arrêté
+        </button>
+        <button id="btnNouveauEssai" class="secondary-btn">
+          Recommencer un nouvel essai
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 2 : MOTIF / PROTECTION / COFFRET -->
+  <section id="screenChoix" class="screen">
+    <h2>Configuration de l'essai</h2>
+
+    <div class="choice-group" data-type="motif">
+      <h3>Motif des essais</h3>
+      <button class="choice-btn" data-value="MES">MISE EN SERVICE</button>
+      <button class="choice-btn" data-value="MODIF">MODIFICATION</button>
+      <button class="choice-btn" data-value="DEP">DEPANNAGE</button>
+    </div>
+
+
+    <div class="choice-group" data-type="protection">
+      <h3>Type de protection</h3>
+      <button class="choice-btn" data-value="H1">H1</button>
+      <button class="choice-btn" data-value="H2">H2</button>
+      <button class="choice-btn" data-value="H3.1">H3.1</button>
+      <button class="choice-btn" data-value="H4">H4</button>
+      <button class="choice-btn" data-value="H5">H5</button>
+    </div>
+
+    <div class="choice-group" data-type="coffret">
+      <h3>Type de coffret</h3>
+      <button class="choice-btn" data-value="DEIE">DEIE</button>
+      <button class="choice-btn" data-value="eDEIE">eDEIE</button>
+    </div>
+
+    <button id="nextBtn" disabled>Continuer</button>
+  </section>
+
+</main>
+
+<!-- FOOTER COPYRIGHT -->
+<footer class="copyright-footer">
+  <p>© 2026 Olivier Guillemard - Tous droits réservés</p>
+  <p class="version">Application Essais DEIE v1.1</p>
+  <p class="usage">Usage interne ENEDIS uniquement</p>
+</footer>
+
+<script src="autosave.js?v=20260217"></script>
+<script src="ux-mobile.js?v=20260217"></script>
+<script src="app.js?v=20260217"></script>
+
+<!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(registration => {
+        console.log('✓ Service Worker enregistré avec succès:', registration.scope);
+      })
+      .catch(error => {
+        console.log('✗ Erreur enregistrement Service Worker:', error);
+      });
+  });
+}
+</script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

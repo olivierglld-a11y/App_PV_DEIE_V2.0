@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Essais DEIE - Fonctions à tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>Sélection des fonctions</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <!-- RÉCAP SESSION -->
+    <section class="recap">
+      <h2>Configuration de l'essai</h2>
+      <p><strong>Motif :</strong> <span id="recapMotif"></span></p>
+      <p><strong>Protection :</strong> <span id="recapProtection"></span></p>
+      <p><strong>Coffret :</strong> <span id="recapCoffret"></span></p>
+    </section>
+
+    <!-- ÉCRAN SÉLECTION (uniquement pour DÉPANNAGE) -->
+    <section id="screenSelection" class="card" style="display:none;">
+      <h2>Sélection des fonctions à tester</h2>
+      <p style="font-size: 0.9rem; color: #666; margin-bottom: 16px;">
+        Cochez les fonctions que vous souhaitez tester :
+      </p>
+
+      <div class="checkbox-list">
+        <label class="checkbox-item" data-fonction="TSS1">
+          <input type="checkbox" value="TSS1">
+          <span>TSS1 - Centrale indisponible</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TSS2">
+          <input type="checkbox" value="TSS2">
+          <span>TSS2 - Centrale couplée</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TELEINFO">
+          <input type="checkbox" value="TELEINFO">
+          <span>TELEINFO - Compteur TIC</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD1">
+          <input type="checkbox" value="TCD1">
+          <span>TCD/TSD1 - Mise EN/HORS Service RSE</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD2">
+          <input type="checkbox" value="TCD2">
+          <span>TCD/TSD2 - Mise EN/HORS Service TAC</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD3">
+          <input type="checkbox" value="TCD3">
+          <span>TCD/TSD3 - Demande d'effacement d'urgence</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD5">
+          <input type="checkbox" value="TCD5">
+          <span>TCD/TSD5 - Autorisation de couplage</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD6">
+          <input type="checkbox" value="TCD6">
+          <span>TCD/TSD6 - Demande de découplage</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD7">
+          <input type="checkbox" value="TCD7">
+          <span>TCD/TSD7 - TéléValeur Consigne P0</span>
+        </label>
+
+        <label class="checkbox-item" data-fonction="TCD8">
+          <input type="checkbox" value="TCD8">
+          <span>TCD/TSD8 - TéléValeur Consigne Q0</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- SOMMAIRE DES FONCTIONS -->
+    <section id="screenSommaire" class="card" style="display:none;">
+      <h2>Sommaire des fonctions à tester</h2>
+      <div id="listeFonctions"></div>
+    </section>
+
+    <!-- BOUTON LANCER LES TESTS -->
+    <div class="form-actions" id="zoneActionSommaire" style="display:none;">
+      <button type="button" class="primary-btn" id="btnLancerTests">
+        Lancer les tests
+      </button>
+    </div>
+
+  </main>
+
+  <script defer src="ux-mobile.js?v=20260217"></script>
+  <script defer src="essais.js?v=20260217"></script>
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>

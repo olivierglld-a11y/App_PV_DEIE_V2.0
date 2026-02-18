@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Essais DEIE - Tests en cours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=20260217">
+</head>
+
+<body>
+
+  <!-- HEADER BLEU -->
+  <header class="header">
+    <img src="enedis.png" alt="Enedis" class="logo">
+    <h1>Essais DEIE</h1>
+    <p>Tests en cours</p>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="container">
+
+    <!-- PROGRESSION -->
+    <section class="progression">
+      <p>
+        <strong>Fonction <span id="numFonction"></span> sur <span id="totalFonctions"></span></strong>
+      </p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </section>
+
+    <!-- TITRE FONCTION -->
+    <section class="card">
+      <h2 id="titreFonction"></h2>
+    </section>
+
+    <!-- CONTRÔLE CÂBLAGE (si coffret DEIE) -->
+    <section id="blocCablage" class="card" style="display:none;">
+      <h3>Contrôle câblage</h3>
+      <div id="listeCablage"></div>
+    </section>
+
+    <!-- TESTS FONCTION -->
+    <section class="card">
+      <h3>Tests de la fonction</h3>
+      <div id="listeTests"></div>
+    </section>
+
+    <!-- SYNTHÈSE FONCTION -->
+    <section id="blocSynthese" class="card" style="display:none;">
+      <h3>Synthèse de la fonction</h3>
+      <p id="texteSynthese" style="font-size: 1.1rem; font-weight: bold;"></p>
+    </section>
+
+    <!-- NAVIGATION -->
+    <div class="form-actions navigation-tests">
+      <button type="button" class="secondary-btn" id="btnPrecedent" style="display:none;">
+        ← Précédent
+      </button>
+      <button type="button" class="primary-btn" id="btnSuivant" disabled>
+        Suivant →
+      </button>
+    </div>
+
+  </main>
+
+  <script defer src="ux-mobile.js?v=20260217"></script>
+  <script defer src="tests.js?v=20260217"></script>
+  <script defer src="progress-indicator.js?v=20260218"></script>
+  <script defer src="dark-mode.js?v=20260217"></script>
+</body>
+</html>
