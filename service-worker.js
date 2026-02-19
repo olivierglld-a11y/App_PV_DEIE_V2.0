@@ -1,5 +1,5 @@
 // Service Worker - Essais DEIE v1.2
-const CACHE_VERSION = 'essais-deie-v1.2-20260218-fixed';
+const CACHE_VERSION = 'essais-deie-v1.2-20260219-email';
 const urlsToCache = [
   './',
   './index.html',

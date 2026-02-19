@@ -909,6 +909,17 @@ function genererPDF() {
   const lienTelecharger = document.getElementById("lienTelecharger");
   lienTelecharger.href = pdfUrl;
   lienTelecharger.download = nomFichier;
+  
+  // Attacher l'événement email (au cas où il n'était pas attaché avant)
+  const btnEmail = document.getElementById("btnEnvoyerEmail");
+  if (btnEmail) {
+    // Supprimer les anciens événements
+    btnEmail.replaceWith(btnEmail.cloneNode(true));
+    // Réattacher l'événement
+    document.getElementById("btnEnvoyerEmail").addEventListener("click", function() {
+      envoyerParEmail();
+    });
+  }
 
   console.log("PDF généré avec succès");
 }
@@ -1801,15 +1812,6 @@ async function uploadToSharePoint() {
     console.error("Erreur upload SharePoint:", result.error);
   }
 }
-
-// Bouton Envoyer par email
-document.addEventListener("DOMContentLoaded", function() {
-  document.addEventListener("click", function(e) {
-    if (e.target && e.target.id === "btnEnvoyerEmail") {
-      envoyerParEmail();
-    }
-  });
-});
 
 function envoyerParEmail() {
   if (!window.pdfGeneratedBlob || !window.pdfGeneratedFilename) {
